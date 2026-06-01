@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>                          
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Data Type</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="numberDataType.js" defer></script>
+</head>
+<body>
+    <div class="numberDataType">
+    <h1>Number Data Type</h1>
+    <p>In JavaScript, the Number data type is used to represent both integer and floating-point numbers. It can also represent special values like NaN (Not-a-Number) and Infinity.</p>
+    <p>Here are some examples of using the Number data type:</p>
+    <ul>
+        <li><code>let age = 30;</code> // An integer</li>
+        <li><code>let price = 19.99;</code> // A floating-point number</li>
+        <li><code>let result = 10 / 0;</code> // Infinity</li>
+        <li><code>let invalid = "abc" * 2;</code> // NaN</li>
+    </ul>
+    
+    <label for="FirstNumber">First Number:</label>
+    <input type="number" id="FirstNumber" name="FirstNumber" placeholder="Enter first number" required>
+    <label for="SecondNumber">Second Number:</label>
+    <input type="number" id="SecondNumber" name="SecondNumber" placeholder="Enter second number" required>
+    <button id="add" onclick="onClickToAdd()">Add</button>
+    <button id="subract" onclick="onClickToSub()">Subtract</button>
+    <button id="multiplication" onclick="onClickToMul()">multiplication</button>
+    <button id="divide" onclick="onClickToDiv()">divide</button>
+    </div>
+</body>
+</html>
