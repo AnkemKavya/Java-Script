@@ -31,3 +31,25 @@ function onClickToDiv() {
     var divide= FirstName / SecondName;
     alert(divide);
 }
+
+function onClickToGetRemainder() {
+    debugger;
+    var  FirstName=Number(document.getElementById("FirstNumber").value);
+    var SecondName=Number(document.getElementById("SecondNumber").value);
+    var remainder= FirstName % SecondName;
+    alert(remainder);
+}
+
+function onClickToSquare() {
+    debugger;
+    var number=document.getElementById("square").value;
+    var square= number * number;
+    alert(square);
+}
+
+function onClickNumber() {
+    debugger;
+    var input= document.getElementById("number").value;
+    var number= input * 5;
+    alert(number);
+}
