@@ -1,25 +1,39 @@
 openingBalance = 500;
-availableBalance = 0;
 function onClickCredit() {
     debugger;
-    var amount = Number(document.getElementById("amount").value);
-    availableBalance = "Balance: "+(openingBalance + availableBalance + amount);
-    var credit = amount + " Credited";
+    var amount = Number(document.getElementById("txtamount").value);
+    openingBalance =(openingBalance + amount);
+    credit = amount + " Credited";
     alert(credit);
-    alert(availableBalance);
+    alert(openingBalance);
 }
 
 function onClickDebit() {
     debugger;
-    var amount = Number(document.getElementById("amount").value);
-    var debit = amount + " Debited";
-    var availableBalance = "Available Balance" + (openingBalance + debit);
+    var amount = Number(document.getElementById("txtamount").value);
+    debit = amount + " Debited";
     alert(debit);
-    if((availableBalance - debit) < 0) {
-        Balance = "Insufficient Balance";
-        alert(Balance);
+    if((openingBalance - amount) < 0) {
+         Balance = "Insufficient Balance";
+         alert(Balance);
     }else{
-        Balance = availableBalance;
-        alert(availableBalance);
+    openingBalance = (openingBalance - amount);
+    
+    alert(openingBalance);
     }
 }
+// function onClickDebit() {
+//     debugger;
+//     var amount = Number(document.getElementById("txtamount").value);
+//     var debit = amount + " Debited";
+//     var availableBalance = "Available Balance" + (openingBalance + debit);
+//     alert(debit);
+    
+//     if((availableBalance - debit) < 0) {
+//         Balance = "Insufficient Balance";
+//         alert(Balance);
+//     }else{
+//         Balance = availableBalance;
+//         alert(availableBalance);
+//     }
+// }
