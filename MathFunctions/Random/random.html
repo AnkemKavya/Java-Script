@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random</title>
+        <script src="random.js"></script>
+    </head>
+    <body>
+        <h1>Static Random</h1>
+        <button id="btnRandom" onclick="onClickStaticRandom()">Check</button>
+        <p id="pResult"></p>
+
+        <h1>Dynamic Random</h1>
+        <label for="lblNumber">Number</label>
+        <input type="number" id="txtNumber" placeholder="Enter a number">
+        <button id="btnCheck" onclick="onClickDynamicRandom()">Check</button>
+        <p id="pResults"></p>
+        <hr>
+
+        <h1>Static fixed Random</h1>
+        <button id="btnRandom" onclick="onClickFixedStaticRandom()">Check</button>
+        <p id="fixedResult"></p>
+
+        <h1>Dynamic fixed Random</h1>
+        <label for="lblNumber">Number</label>
+        <input type="number" id="txtFixedNumber" placeholder="Enter a number">
+        <button id="btnCheck" onclick="onClickFixedDynamicRandom()">Check</button>
+        <p id="fixedResults"></p>
+
+    </body>
+</html>
