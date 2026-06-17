@@ -11,4 +11,6 @@ body{
     box-shadow: 6px 8px 15px #e80808;
     margin: 30px auto;
     border-radius: 5px;
+    text-align: center;
+    padding-top: 70px;
 }
