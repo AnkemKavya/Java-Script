@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timetable Management Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-k5MmRcIuGdXjX4e9nM1jOaKPu7eDc0pA3V5fBiaPjTiMvVk4WEX5w4/7yGz7z8qfQ4Qiw7z53FQkC2w7pP+7FQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="login-overlay" id="loginOverlay">
+        <div class="login-card">
+          <div class="login-brand">
+            <div class="brand-mark"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <h1>MorningFlow</h1>
+              <p>Plan your day with clarity and momentum.</p>
+            </div>
+          </div>
+          <form id="loginForm" class="login-form" novalidate>
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@domain.com" required />
+              <span class="input-error" id="emailError">Enter a valid email address</span>
+            </div>
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="••••••••" required minlength="6" />
+              <span class="input-error" id="passwordError">Password must be 6+ characters</span>
+            </div>
+            <div class="form-row remember-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="rememberMe" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="link-muted">Forgot password?</a>
+            </div>
+               <button type="submit" class="btn btn-primary">Sign In</button>
+            <span class="input-error" id="loginError"></span>
+          </form>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-sun"></i>
+          <span>Timetable</span>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active"><i class="fa-solid fa-list-check"></i> Schedule</button>
+          <button class="nav-item"><i class="fa-solid fa-chart-simple"></i> Analytics</button>
+          <button class="nav-item"><i class="fa-solid fa-gear"></i> Settings</button>
+        </nav>
+        <div class="sidebar-footer">
+          <p>Designed for focused mornings.</p>
+        </div>
+      </aside>
+
+      <main class="dashboard hidden" id="dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Good morning, planner</p>
+            <h1>Your Morning Dashboard</h1>
+          </div>
+          <div class="status-chip">
+            <span class="status-dot"></span>
+            Live schedule mode
+          </div>
+        </header>
+
+        <section class="progress-summary card">
+          <div>
+            <p class="eyebrow">Today&apos;s progress</p>
+            <h2 id="progressText">0% Completed</h2>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <span id="taskCountText">0 / 0 tasks completed</span>
+          </div>
+        </section>
+
+        <section class="grid-layout">
+          <div class="card panel-card">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Morning schedule</p>
+                <h2>Add a new time slot</h2>
+              </div>
+              <button class="btn btn-secondary" id="saveScheduleButton">Save Schedule</button>
+            </div>
+            <form id="slotForm" class="slot-form">
+              <div class="row two-columns">
+                <div class="input-group">
+                  <label for="startTime">Start</label>
+                  <input type="time" id="startTime" required />
+                </div>
+                <div class="input-group">
+                  <label for="endTime">End</label>
+                  <input type="time" id="endTime" required />
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group full-width">
+                  <label for="taskTitle">Task Title</label>
+                  <input type="text" id="taskTitle" placeholder="Exercise, Reading, Deep Work" required />
+                </div>
+              </div>
+              <div class="row two-columns">
+                <div class="input-group">
+                  <label for="category">Category</label>
+                  <select id="category">
+                    <option>Work</option>
+                    <option>Health</option>
+                    <option>Personal</option>
+                    <option>Learning</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label for="priority">Priority</label>
+                  <select id="priority">
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="addSlotButton">Add Slot</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card analytics-card">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Analytics</p>
+                <h2>Performance overview</h2>
+              </div>
+            </div>
+            <div class="charts-grid">
+              <div class="chart-card">
+                <canvas id="completionChart" aria-label="Completion rate chart"></canvas>
+              </div>
+              <div class="chart-card">
+                <canvas id="allocationChart" aria-label="Time allocation chart"></canvas>
+              </div>
+            </div>
+            <div class="insight-card">
+              <div>
+                <p class="eyebrow">Insight</p>
+                <h3 id="insightText">Add morning tasks to see your productivity insight.</h3>
+              </div>
+              <div class="insight-badge">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card tasks-card">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Timetable</p>
+              <h2>Morning task timeline</h2>
+            </div>
+          </div>
+          <div id="taskList" class="task-list">
+            <div class="empty-state">
+              <i class="fa-solid fa-clock"></i>
+              <p>Your morning timetable is ready to be built. Add a slot to begin.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
